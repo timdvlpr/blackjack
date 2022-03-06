@@ -1,0 +1,47 @@
+@import '_variables';
+@import '_mixins';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 16.5rem;
+  width: 11rem;
+  border: 1px solid $white;
+  background: $dark;
+  position: relative;
+  padding: 0.5rem;
+  &:after, &:before {
+    content: '';
+    position: absolute;
+    left: 43%;
+    height: 2px;
+    width: 1.5rem;
+    background: $dark;
+  }
+  &:before {
+    bottom: -2px;
+  }
+  &:after {
+    top: -2px;
+  }
+  p {
+    text-shadow: 0 0 8px $light;
+  }
+  &-center {
+    text-align: center;
+    font-size: 4rem;
+  }
+  &-bottom {
+    text-align: right;
+  }
+  &-bottom, &-top {
+    font-size: 1.3rem;
+  }
+  &-back {
+    @include flex-center;
+    p {
+      font-size: 4rem;
+    }
+  }
+}

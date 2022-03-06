@@ -1,0 +1,21 @@
+<div class="card" *ngIf="!showCardBack; else cardBack">
+  <div class="card-top">
+    <p>{{card?.type}}</p>
+    <p>{{card?.suit}}</p>
+  </div>
+  <div class="card-center">
+    <p>{{card?.suit}}</p>
+  </div>
+  <div class="card-bottom">
+    <p>{{card?.suit}}</p>
+    <p>{{card?.type}}</p>
+  </div>
+</div>
+
+<ng-template #cardBack>
+  <div class="card card-back">
+    <div class="card-center">
+      <p>?</p>
+    </div>
+  </div>
+</ng-template>
