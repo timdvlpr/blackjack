@@ -1,0 +1,7 @@
+<section class="dealer-cards">
+    <app-card
+      *ngFor="let card of dealerHand?.cards; let i = index;"
+      [showCardBack]="i === 1 && !revealCard"
+      [card]="card">
+    </app-card>
+</section>

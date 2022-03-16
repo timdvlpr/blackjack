@@ -1,0 +1,8 @@
+@import '_mixins';
+
+.dealer-cards {
+  @include flex-center;
+  app-card {
+    margin: 0 -2rem;
+  }
+}
