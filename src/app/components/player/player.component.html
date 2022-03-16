@@ -1,0 +1,8 @@
+<section
+  *ngFor="let hand of playerHands; let i = index;"
+>
+  <div class="player-cards">
+    <app-card *ngFor="let card of hand.cards" [card]="card"></app-card>
+  </div>
+  <p>{{hand.total}}</p>
+</section>

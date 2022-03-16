@@ -1,0 +1,23 @@
+@import '_variables';
+@import '_mixins';
+
+section {
+  @include flex-center-column;
+  p {
+    margin-top: 1rem;
+    display: inline-block;
+    border: 1px solid $white;
+    padding: 0.5rem 2rem;
+  }
+}
+.player-cards {
+  @include flex-center;
+  app-card {
+    margin: 0 -2rem;
+    &:hover {
+      transition: 0.25s;
+      transform: translateY(-2rem);
+    }
+  }
+}
+
