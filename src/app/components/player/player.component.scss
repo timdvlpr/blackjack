@@ -7,17 +7,35 @@ section {
     margin-top: 1rem;
     display: inline-block;
     border: 1px solid $white;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 1.5rem;
+  }
+  position: relative;
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    animation: busted-animation 0.5s forwards;
+    font-size: 3.5rem;
   }
 }
 .player-cards {
   @include flex-center;
   app-card {
-    margin: 0 -2rem;
+    margin: 0 0.25rem;
     &:hover {
       transition: 0.25s;
       transform: translateY(-2rem);
     }
   }
 }
-
+.busted {
+  margin: 0 -4rem !important;
+  pointer-events: none;
+}
+.busted-opacity {
+  opacity: 40%;
+}
+@keyframes busted-animation {
+  from { transform: translate(-50%, -50%) rotate(-45deg) scale(1.5); }
+  to { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
+}
