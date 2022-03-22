@@ -1,7 +1,7 @@
 <ng-container [ngSwitch]="type">
-  <button *ngSwitchCase="'hold'" [class.disabled]="disabled">
+  <button *ngSwitchCase="'stand'" [class.disabled]="disabled">
     <fa-icon icon="minus"></fa-icon>
-    <span>Hold</span>
+    <span>Stand</span>
   </button>
   <button *ngSwitchCase="'draw'" [class.disabled]="disabled">
     <fa-icon icon="plus"></fa-icon>

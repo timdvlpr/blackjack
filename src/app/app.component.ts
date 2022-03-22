@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   dealerHand: Hand = new Hand([]);
   playerHands: Hand[] = [new Hand([])];
   currentHandIndex = 0;
+  dealerTurn = false;
 
   constructor(private deckService: DeckService) {}
 
@@ -23,6 +24,54 @@ export class AppComponent implements OnInit {
         this.dealerHand.addCard(this.deckService.nextCard!, false);
       }
     }
+  }
+
+  draw(): void {
+    this.playerHands[this.currentHandIndex].addCard(
+      this.deckService.nextCard!,
+      true
+    );
+    this.checkPlayerTotal();
+  }
+
+  stand(): void {
+    if (this.currentHandIndex === this.playerHands.length - 1) {
+      this.checkDealerTotal();
+    } else {
+      this.currentHandIndex++;
+    }
+  }
+
+  checkPlayerTotal(): void {
+    const currentPlayerHand = this.playerHands[this.currentHandIndex];
+
+    if (currentPlayerHand.total > 21) {
+      if (this.playerHands.length > 1 && this.currentHandIndex === 0) {
+        this.currentHandIndex++;
+      }
+      currentPlayerHand.busted = true;
+      return;
+    }
+    if (currentPlayerHand.hasTripleSeven()) {
+      console.log('Won with triple seven');
+    }
+  }
+
+  checkDealerTotal(): void {
+    this.dealerTurn = true;
+    if (this.dealerHand.total > 21) {
+      this.dealerHand.busted = true;
+    }
+    if (this.dealerHand.total <= 16) {
+      this.dealerHand.addCard(this.deckService.nextCard!, false);
+      this.checkDealerTotal();
+    }
+    this.checkWinner();
+  }
+
+  checkWinner(): void {
+    const playerHands = this.playerHands.filter((hand) => !hand.busted);
+    console.log('checking for winner');
   }
 
   ngOnInit(): void {
