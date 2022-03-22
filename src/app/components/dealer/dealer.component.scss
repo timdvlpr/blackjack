@@ -3,6 +3,6 @@
 .dealer-cards {
   @include flex-center;
   app-card {
-    margin: 0 -2rem;
+    margin: 0 0.25rem;
   }
 }
