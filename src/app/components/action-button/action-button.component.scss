@@ -1,0 +1,43 @@
+@import '_variables';
+
+button {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 1px solid $white;
+  background-color: $dark;
+  color: $white;
+  margin: 0 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  position: relative;
+  span {
+    position: absolute;
+    top: -1.5rem;
+    left: 0.5rem;
+    text-transform: uppercase;
+    display: none;
+    transition: 0.25s;
+    animation: action-info-animation 0.25s forwards;
+  }
+  &:hover {
+    span {
+      display: block;
+    }
+  }
+  &:hover {
+    animation: pulsating 0.5s;
+  }
+}
+.disabled {
+  pointer-events: none;
+  opacity: 25%;
+}
+@keyframes pulsating {
+  from { box-shadow: 0 0 0 0 #d5d5d550; }
+  to { box-shadow: 0 0 0 1rem #B2B2B200; }
+}
+@keyframes action-info-animation {
+  from { transform: translateY(-0.5rem); }
+  to { transform: translateX(0); }
+}

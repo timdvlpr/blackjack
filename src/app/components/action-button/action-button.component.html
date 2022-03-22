@@ -1,0 +1,15 @@
+<ng-container [ngSwitch]="type">
+  <button *ngSwitchCase="'hold'" [class.disabled]="disabled">
+    <fa-icon icon="minus"></fa-icon>
+    <span>Hold</span>
+  </button>
+  <button *ngSwitchCase="'draw'" [class.disabled]="disabled">
+    <fa-icon icon="plus"></fa-icon>
+    <span>Draw</span>
+  </button>
+  <button *ngSwitchCase="'split'" [class.disabled]="disabled">
+    <fa-icon icon="angle-left"></fa-icon>
+    <fa-icon icon="angle-right"></fa-icon>
+    <span>Split</span>
+  </button>
+</ng-container>
