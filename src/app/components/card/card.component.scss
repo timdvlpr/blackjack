@@ -14,7 +14,8 @@
   &:after, &:before {
     content: '';
     position: absolute;
-    left: 43%;
+    left: 50%;
+    transform: translateX(-50%);
     height: 2px;
     width: 1.5rem;
     background: $dark;
