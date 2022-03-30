@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-type ActionButton = 'stand' | 'draw' | 'doubleDown' | 'split';
+type ActionButton = 'stand' | 'draw' | 'doubleDown' | 'split' | 'newRound';
 
 @Component({
   selector: 'app-action-button',

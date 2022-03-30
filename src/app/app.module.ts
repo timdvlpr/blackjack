@@ -14,7 +14,8 @@ import {
   faPlus,
   faMinus,
   faAngleLeft,
-  faAngleRight
+  faAngleRight,
+  faArrowRotateRight
 } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
@@ -31,6 +32,12 @@ import {
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
-    library.addIcons(faPlus, faMinus, faAngleLeft, faAngleRight);
+    library.addIcons(
+      faPlus,
+      faMinus,
+      faAngleLeft,
+      faAngleRight,
+      faArrowRotateRight
+    );
   }
 }

@@ -1,15 +1,19 @@
 <ng-container [ngSwitch]="type">
-  <button *ngSwitchCase="'stand'" [class.disabled]="disabled">
+  <button class="stand-btn" *ngSwitchCase="'stand'" [class.disabled]="disabled">
     <fa-icon icon="minus"></fa-icon>
     <span>Stand</span>
   </button>
-  <button *ngSwitchCase="'draw'" [class.disabled]="disabled">
+  <button class="draw-btn" *ngSwitchCase="'draw'" [class.disabled]="disabled">
     <fa-icon icon="plus"></fa-icon>
     <span>Draw</span>
   </button>
-  <button *ngSwitchCase="'split'" [class.disabled]="disabled">
+  <button class="split-btn" *ngSwitchCase="'split'" [class.disabled]="disabled">
     <fa-icon icon="angle-left"></fa-icon>
     <fa-icon icon="angle-right"></fa-icon>
     <span>Split</span>
+  </button>
+  <button class="new-round-btn" *ngSwitchCase="'newRound'">
+    <fa-icon icon="arrow-rotate-right"></fa-icon>
+    <span>New Round</span>
   </button>
 </ng-container>

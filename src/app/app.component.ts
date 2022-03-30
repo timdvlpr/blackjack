@@ -12,11 +12,21 @@ export class AppComponent implements OnInit {
   playerHands: Hand[] = [new Hand([])];
   currentHandIndex = 0;
   dealerTurn = false;
+  roundOver = false;
 
   constructor(private deckService: DeckService) {}
 
   initGame(): void {
     this.deckService.initDeckOfCards(6);
+    this.initStartingCards();
+  }
+
+  initRound(): void {
+    this.reset();
+    this.initStartingCards();
+  }
+
+  initStartingCards(): void {
     for (let i = 1; i < 5; i++) {
       if (i % 2 === 0) {
         this.playerHands[0].addCard(this.deckService.nextCard!, true);
@@ -24,6 +34,14 @@ export class AppComponent implements OnInit {
         this.dealerHand.addCard(this.deckService.nextCard!, false);
       }
     }
+  }
+
+  reset(): void {
+    this.currentHandIndex = 0;
+    this.dealerTurn = false;
+    this.roundOver = false;
+    this.dealerHand = new Hand([]);
+    this.playerHands = [new Hand([])];
   }
 
   draw(): void {
@@ -50,6 +68,7 @@ export class AppComponent implements OnInit {
         this.currentHandIndex++;
       }
       currentPlayerHand.busted = true;
+      this.roundOver = true;
       return;
     }
     if (currentPlayerHand.hasTripleSeven()) {

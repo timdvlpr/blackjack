@@ -14,7 +14,7 @@ button {
   span {
     position: absolute;
     top: -1.5rem;
-    left: 0.5rem;
+    left: 0.45rem;
     text-transform: uppercase;
     display: none;
     transition: 0.25s;
@@ -27,6 +27,17 @@ button {
   }
   &:hover {
     animation: pulsating 0.5s;
+  }
+}
+.new-round-btn {
+  span {
+    top: -2.6rem;
+    left: 0.2rem;
+  }
+}
+.stand-btn {
+  span {
+    left: 0.2rem;
   }
 }
 .disabled {

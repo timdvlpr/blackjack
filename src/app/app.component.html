@@ -3,20 +3,29 @@
   <app-dealer [dealerHand]="dealerHand" [revealCard]="dealerTurn"></app-dealer>
 
   <div class="action-buttons">
-    <app-action-button
-      type="stand"
-      (click)="stand()"
-      [disabled]="dealerTurn">
-    </app-action-button>
-    <app-action-button
-      type="split"
-      [disabled]="!playerHands[currentHandIndex].isSplittable() || dealerTurn">
-    </app-action-button>
-    <app-action-button
-      type="draw"
-      (click)="draw()"
-      [disabled]="dealerTurn">
-    </app-action-button>
+    <ng-container *ngIf="!roundOver; else newRoundOption">
+      <app-action-button
+        type="stand"
+        (click)="stand()"
+        [disabled]="dealerTurn">
+      </app-action-button>
+      <app-action-button
+        type="split"
+        [disabled]="!playerHands[currentHandIndex].isSplittable() || dealerTurn">
+      </app-action-button>
+      <app-action-button
+        type="draw"
+        (click)="draw()"
+        [disabled]="dealerTurn">
+      </app-action-button>
+    </ng-container>
+
+    <ng-template #newRoundOption>
+      <app-action-button
+        type="newRound"
+        (click)="initRound()">
+      </app-action-button>
+    </ng-template>
   </div>
 
   <app-player [playerHands]="playerHands"></app-player>
