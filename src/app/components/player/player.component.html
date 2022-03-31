@@ -1,13 +1,13 @@
 <section
   *ngFor="let hand of playerHands; let i = index;"
 >
-  <div class="player-cards" [class.busted-opacity]="hand.busted">
+  <app-result [result]="hand.result"></app-result>
+  <div class="player-cards" [class.result-opacity]="hand.result !== 'none'">
     <app-card
       *ngFor="let card of hand.cards"
       [card]="card"
-      [class.busted]="hand.busted">
+      [class.bust]="hand.result === 'bust'">
     </app-card>
   </div>
   <p>{{hand.total}}</p>
-  <span *ngIf="hand.busted">BUST</span>
 </section>

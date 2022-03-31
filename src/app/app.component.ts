@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hand } from './models/hand';
 import { DeckService } from './services/deck.service';
+import { Result } from './enums/result';
 
 @Component({
   selector: 'app-root',
@@ -67,30 +68,63 @@ export class AppComponent implements OnInit {
       if (this.playerHands.length > 1 && this.currentHandIndex === 0) {
         this.currentHandIndex++;
       }
-      currentPlayerHand.busted = true;
+      currentPlayerHand.result = Result.BUST;
       this.roundOver = true;
       return;
     }
     if (currentPlayerHand.hasTripleSeven()) {
-      console.log('Won with triple seven');
+      currentPlayerHand.result = Result.WIN;
     }
   }
 
   checkDealerTotal(): void {
     this.dealerTurn = true;
     if (this.dealerHand.total > 21) {
-      this.dealerHand.busted = true;
+      this.playerHands.forEach((hand) => {
+        if (hand.result !== 'bust') {
+          hand.result = Result.WIN;
+        }
+      });
+      this.roundOver = true;
+      return;
     }
     if (this.dealerHand.total <= 16) {
       this.dealerHand.addCard(this.deckService.nextCard!, false);
       this.checkDealerTotal();
+    } else {
+      this.checkWinner();
     }
-    this.checkWinner();
   }
 
   checkWinner(): void {
-    const playerHands = this.playerHands.filter((hand) => !hand.busted);
-    console.log('checking for winner');
+    const playerHands = this.playerHands.filter(
+      (hand) => hand.result !== 'bust'
+    );
+
+    for (let i = 0; i < playerHands.length; i++) {
+      if (playerHands[i].hasBlackJack()) {
+        if (this.dealerHand.hasBlackJack()) {
+          playerHands[i].result = Result.TIE;
+        } else {
+          playerHands[i].result = Result.WIN;
+        }
+        continue;
+      }
+
+      if (playerHands[i].total <= 21) {
+        if (
+          this.dealerHand.hasBlackJack() ||
+          this.dealerHand.total > playerHands[i].total
+        ) {
+          playerHands[i].result = Result.LOSS;
+        } else if (this.dealerHand.total === playerHands[i].total) {
+          playerHands[i].result = Result.TIE;
+        } else {
+          playerHands[i].result = Result.WIN;
+        }
+      }
+    }
+    this.roundOver = true;
   }
 
   ngOnInit(): void {

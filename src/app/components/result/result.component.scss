@@ -1,0 +1,20 @@
+@import '_variables';
+
+.result {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: $dark;
+  color: $white;
+  z-index: 99;
+  p {
+    font-size: 3.5rem;
+    text-shadow: 0 0 8px $accent;
+    animation: result-animation 0.5s forwards;
+  }
+}
+
+@keyframes result-animation {
+  from { transform: translate(-50%, -50%) rotate(-45deg) scale(1.5); }
+  to { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
+}

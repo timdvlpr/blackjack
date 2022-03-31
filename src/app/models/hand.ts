@@ -1,14 +1,15 @@
 import { Card } from './card';
+import { Result } from '../enums/result';
 
 export class Hand {
   cards: Card[];
   total: number;
-  busted: boolean;
+  result: Result;
 
   constructor(cards: Card[]) {
     this.cards = cards;
     this.total = this.calcTotal();
-    this.busted = false;
+    this.result = Result.NONE;
   }
 
   private calcTotal(): number {

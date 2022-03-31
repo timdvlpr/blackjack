@@ -17,6 +17,7 @@ import {
   faAngleRight,
   faArrowRotateRight
 } from '@fortawesome/free-solid-svg-icons';
+import { ResultComponent } from './components/result/result.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {
     CardComponent,
     PlayerComponent,
     DealerComponent,
-    ActionButtonComponent
+    ActionButtonComponent,
+    ResultComponent
   ],
   imports: [BrowserModule, FontAwesomeModule],
   providers: [],

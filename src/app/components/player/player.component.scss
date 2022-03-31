@@ -2,6 +2,7 @@
 @import '_mixins';
 
 section {
+  position: relative;
   @include flex-center-column;
   p {
     margin-top: 1rem;
@@ -26,14 +27,6 @@ section {
       top: -2px;
     }
   }
-  position: relative;
-  span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    animation: busted-animation 0.5s forwards;
-    font-size: 3.5rem;
-  }
 }
 .player-cards {
   @include flex-center;
@@ -45,14 +38,11 @@ section {
     }
   }
 }
-.busted {
+.bust {
   margin: 0 -4rem !important;
   pointer-events: none;
 }
-.busted-opacity {
-  opacity: 40%;
-}
-@keyframes busted-animation {
-  from { transform: translate(-50%, -50%) rotate(-45deg) scale(1.5); }
-  to { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
+.result-opacity {
+  opacity: 30%;
+  pointer-events: none;
 }
