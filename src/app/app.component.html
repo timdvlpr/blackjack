@@ -15,7 +15,7 @@
         [disabled]="!playerHands[currentHandIndex].isSplittable() || dealerTurn || playerHands.length > 1">
       </app-action-button>
       <app-action-button
-        type="draw"
+        type="hit"
         (click)="draw()"
         [disabled]="dealerTurn">
       </app-action-button>
