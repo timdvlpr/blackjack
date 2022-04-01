@@ -3,6 +3,7 @@
 
 section {
   position: relative;
+  margin: 0 2rem;
   @include flex-center-column;
   p {
     margin-top: 1rem;
@@ -27,22 +28,28 @@ section {
       top: -2px;
     }
   }
+  fa-icon {
+    position: absolute;
+    top: -2rem;
+    animation: pointer-animation 1s infinite;
+  }
 }
 .player-cards {
   @include flex-center;
   app-card {
     margin: 0 0.25rem;
-    &:hover {
-      transition: 0.25s;
-      transform: translateY(-2rem);
-    }
   }
 }
 .bust {
-  margin: 0 -4rem !important;
   pointer-events: none;
 }
 .result-opacity {
   opacity: 30%;
   pointer-events: none;
+}
+
+@keyframes pointer-animation {
+  0% { transform: translateY(0) }
+  50% { transform: translateY(0.5rem)}
+  100%{ transform: translateY(0) }
 }

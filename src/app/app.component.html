@@ -11,7 +11,8 @@
       </app-action-button>
       <app-action-button
         type="split"
-        [disabled]="!playerHands[currentHandIndex].isSplittable() || dealerTurn">
+        (click)="split()"
+        [disabled]="!playerHands[currentHandIndex].isSplittable() || dealerTurn || playerHands.length > 1">
       </app-action-button>
       <app-action-button
         type="draw"
@@ -28,6 +29,6 @@
     </ng-template>
   </div>
 
-  <app-player [playerHands]="playerHands"></app-player>
+  <app-player [playerHands]="playerHands" [currentHandIndex]="currentHandIndex"></app-player>
 
 </main>

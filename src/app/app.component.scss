@@ -12,3 +12,6 @@ main {
   align-items: center;
   overflow: hidden;
 }
+app-player {
+  @include flex-center();
+}

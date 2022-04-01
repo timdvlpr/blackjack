@@ -40,6 +40,12 @@ export class Hand {
     }
   }
 
+  splitCard(): Card {
+    const card = this.cards.pop() as Card;
+    this.total -= card.value;
+    return card;
+  }
+
   hasTripleSeven(): boolean {
     return (
       this.cards.length === 3 &&

@@ -15,7 +15,8 @@ import {
   faMinus,
   faAngleLeft,
   faAngleRight,
-  faArrowRotateRight
+  faArrowRotateRight,
+  faChevronDown
 } from '@fortawesome/free-solid-svg-icons';
 import { ResultComponent } from './components/result/result.component';
 
@@ -39,7 +40,8 @@ export class AppModule {
       faMinus,
       faAngleLeft,
       faAngleRight,
-      faArrowRotateRight
+      faArrowRotateRight,
+      faChevronDown
     );
   }
 }

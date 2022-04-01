@@ -1,6 +1,7 @@
 <section
   *ngFor="let hand of playerHands; let i = index;"
 >
+  <fa-icon icon="chevron-down" *ngIf="currentHandIndex === i"></fa-icon>
   <app-result [result]="hand.result"></app-result>
   <div class="player-cards" [class.result-opacity]="hand.result !== 'none'">
     <app-card

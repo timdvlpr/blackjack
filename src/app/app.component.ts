@@ -61,15 +61,46 @@ export class AppComponent implements OnInit {
     }
   }
 
+  split(): void {
+    if (
+      !this.playerHands[this.currentHandIndex].isSplittable() ||
+      this.playerHands.length > 1
+    ) {
+      return;
+    }
+
+    const splitCard = this.playerHands[this.currentHandIndex].splitCard();
+    const splitHand = new Hand([splitCard]);
+    this.playerHands.push(splitHand);
+
+    this.playerHands[this.currentHandIndex].addCard(
+      this.deckService.nextCard!,
+      true
+    );
+    this.playerHands[this.currentHandIndex + 1].addCard(
+      this.deckService.nextCard!,
+      true
+    );
+  }
+
   checkPlayerTotal(): void {
     const currentPlayerHand = this.playerHands[this.currentHandIndex];
 
     if (currentPlayerHand.total > 21) {
+      currentPlayerHand.result = Result.BUST;
       if (this.playerHands.length > 1 && this.currentHandIndex === 0) {
         this.currentHandIndex++;
+      } else {
+        const allHandsBust = this.playerHands.every(
+          (hand) => hand.result === 'bust'
+        );
+        if (allHandsBust) {
+          this.dealerTurn = true;
+          this.roundOver = true;
+          return;
+        }
+        this.checkDealerTotal();
       }
-      currentPlayerHand.result = Result.BUST;
-      this.roundOver = true;
       return;
     }
     if (currentPlayerHand.hasTripleSeven()) {
