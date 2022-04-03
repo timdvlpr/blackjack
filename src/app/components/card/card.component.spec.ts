@@ -8,9 +8,8 @@ describe('CardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardComponent ]
-    })
-    .compileComponents();
+      declarations: [CardComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +20,21 @@ describe('CardComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should show card front if showCardBack is false', () => {
+    component.showCardBack = false;
+    fixture.detectChanges();
+    const cardFront =
+      fixture.debugElement.nativeElement.querySelector('.card-front');
+    expect(cardFront).not.toBeNull();
+  });
+
+  it('should show card back if showCardBack is true', () => {
+    component.showCardBack = true;
+    fixture.detectChanges();
+    const cardBack =
+      fixture.debugElement.nativeElement.querySelector('.card-back');
+    expect(cardBack).not.toBeNull();
   });
 });
