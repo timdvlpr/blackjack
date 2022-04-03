@@ -9,9 +9,14 @@ section {
     margin-top: 1rem;
     display: inline-block;
     border: 1px solid $white;
-    padding: 0.5rem 1.5rem;
+    padding: 0.25rem 1rem;
     text-shadow: 0 0 8px $accent;
     position: relative;
+    font-size: 0.9rem;
+    @include for-desktop-up {
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+    }
     &:after, &:before {
       content: '';
       position: absolute;
