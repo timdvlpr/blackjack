@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DealerComponent } from './dealer.component';
+import { Hand } from '../../models/hand';
+import { Card } from '../../models/card';
+import { CardComponent } from '../card/card.component';
 
 describe('DealerComponent', () => {
   let component: DealerComponent;
@@ -8,9 +11,8 @@ describe('DealerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DealerComponent ]
-    })
-    .compileComponents();
+      declarations: [DealerComponent, CardComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +23,13 @@ describe('DealerComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render dealer cards', () => {
+    component.dealerHand = new Hand([new Card('♥', '10'), new Card('♥', 'J')]);
+    fixture.detectChanges();
+    const cards =
+      fixture.debugElement.nativeElement.querySelectorAll('app-card');
+    expect(cards.length).toBe(2);
   });
 });
