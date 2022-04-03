@@ -6,18 +6,7 @@ import { CardComponent } from './components/card/card.component';
 import { PlayerComponent } from './components/player/player.component';
 import { DealerComponent } from './components/dealer/dealer.component';
 import { ActionButtonComponent } from './components/action-button/action-button.component';
-import {
-  FontAwesomeModule,
-  FaIconLibrary
-} from '@fortawesome/angular-fontawesome';
-import {
-  faPlus,
-  faMinus,
-  faAngleLeft,
-  faAngleRight,
-  faArrowRotateRight,
-  faChevronDown
-} from '@fortawesome/free-solid-svg-icons';
+import { IconModule } from './icon.module';
 import { ResultComponent } from './components/result/result.component';
 
 @NgModule({
@@ -29,19 +18,8 @@ import { ResultComponent } from './components/result/result.component';
     ActionButtonComponent,
     ResultComponent
   ],
-  imports: [BrowserModule, FontAwesomeModule],
+  imports: [BrowserModule, IconModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor(library: FaIconLibrary) {
-    library.addIcons(
-      faPlus,
-      faMinus,
-      faAngleLeft,
-      faAngleRight,
-      faArrowRotateRight,
-      faChevronDown
-    );
-  }
-}
+export class AppModule {}
