@@ -6,9 +6,8 @@ import { DealerComponent } from './components/dealer/dealer.component';
 import { PlayerComponent } from './components/player/player.component';
 import { ActionButtonComponent } from './components/action-button/action-button.component';
 import { IconModule } from './icon.module';
-import { CardComponent } from './components/card/card.component';
-import { ResultComponent } from './components/result/result.component';
 import { Result } from './enums/result';
+import { MockComponent } from 'ng-mocks';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -18,11 +17,9 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        DealerComponent,
-        PlayerComponent,
-        ActionButtonComponent,
-        CardComponent,
-        ResultComponent
+        MockComponent(DealerComponent),
+        MockComponent(PlayerComponent),
+        MockComponent(ActionButtonComponent)
       ],
       imports: [IconModule]
     }).compileComponents();

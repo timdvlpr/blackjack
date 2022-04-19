@@ -4,6 +4,7 @@ import { DealerComponent } from './dealer.component';
 import { Hand } from '../../models/hand';
 import { Card } from '../../models/card';
 import { CardComponent } from '../card/card.component';
+import { MockComponent } from 'ng-mocks';
 
 describe('DealerComponent', () => {
   let component: DealerComponent;
@@ -11,7 +12,7 @@ describe('DealerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DealerComponent, CardComponent]
+      declarations: [DealerComponent, MockComponent(CardComponent)]
     }).compileComponents();
   });
 

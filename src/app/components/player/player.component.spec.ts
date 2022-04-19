@@ -6,6 +6,7 @@ import { Card } from '../../models/card';
 import { IconModule } from '../../icon.module';
 import { CardComponent } from '../card/card.component';
 import { ResultComponent } from '../result/result.component';
+import { MockComponent } from 'ng-mocks';
 
 describe('PlayerComponent', () => {
   let component: PlayerComponent;
@@ -13,7 +14,11 @@ describe('PlayerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PlayerComponent, CardComponent, ResultComponent],
+      declarations: [
+        PlayerComponent,
+        MockComponent(CardComponent),
+        MockComponent(ResultComponent)
+      ],
       imports: [IconModule]
     }).compileComponents();
   });
